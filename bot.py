@@ -1,13 +1,15 @@
+import os
 import asyncio
 import aiohttp
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 
-# --- Configuration ---
-API_ID = "17875613"              # Get from my.telegram.org
-API_HASH = "6798f54a7f74e94f2ef0923fba8a8377"          # Get from my.telegram.org
-BOT_TOKEN = "7780022269:AAE6xCO3B7_Y6VfbW60zzyr6YzZuP33wz0U"        # Get from @BotFather
-JACHU_API_KEY = "3529ceaf18de4043b0323b48f68f4e89" # Get from jachu.xyz
+# --- Configuration using Environment Variables ---
+# We use int() for API_ID because Pyrogram requires it to be a number
+API_ID = int(os.environ.get("API_ID", 0))
+API_HASH = os.environ.get("API_HASH", "")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+JACHU_API_KEY = os.environ.get("JACHU_API_KEY", "")
 
 app = Client("jachu_shortener_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
